@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgidutldhdgyo"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/Bullet/Bullet.gd" id="1_2ntjv"]
+[ext_resource type="Texture2D" uid="uid://b7iafn1v1e6br" path="res://Art/Weapon/Bullet/Bullet.png" id="2_j63fw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbsyg"]
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(14.6622, 1.48177)
+script = ExtResource("1_2ntjv")
+
+[node name="Bullet" type="Node2D" parent="."]
+scale = Vector2(30, 30)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(0.613823, 0.720879)
+mesh = SubResource("BoxMesh_jbsyg")
+texture = ExtResource("2_j63fw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.68434e-14, 0)
+scale = Vector2(0.2, 0.2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
