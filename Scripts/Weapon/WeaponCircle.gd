@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func _get_rotation():
-	if global_rotation_degrees > -89:
+	if global_rotation_degrees < 90 and global_rotation_degrees > -90:
 		print("rechts",global_rotation_degrees)
 		$Gun.flip_v = false
 	else:
