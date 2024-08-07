@@ -11,3 +11,5 @@ texture = ExtResource("1_kdixx")
 position = Vector2(86.0313, -15)
 scale = Vector2(0.0196778, 0.02457)
 texture = ExtResource("1_kdixx")
+
+[node name="Marker2D" type="Marker2D" parent="Muzzel"]

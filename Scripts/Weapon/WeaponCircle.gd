@@ -17,8 +17,8 @@ func _process(delta):
 
 func _get_rotation():
 	if global_rotation_degrees < 90 and global_rotation_degrees > -90:
-		print("rechts",global_rotation_degrees)
+		$"../DebugLabel".text = ("rechts")
 		$Gun.flip_v = false
 	else:
-		print("links",global_rotation_degrees)
+		$"../DebugLabel".text = ("links")
 		$Gun.flip_v = true

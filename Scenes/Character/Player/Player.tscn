@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://qw57ip1krywx"]
+[gd_scene load_steps=11 format=3 uid="uid://qw57ip1krywx"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Player/Player.gd" id="1_vlblm"]
 [ext_resource type="Texture2D" uid="uid://dpn7vn11s0uhr" path="res://Art/Character/Untitled.png" id="2_xhebk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Character/AimLine.gd" id="4_uos3j"]
 [ext_resource type="PackedScene" uid="uid://cia3emff0ahm5" path="res://Scenes/Weapon/Gun.tscn" id="5_gxxlo"]
 [ext_resource type="Script" path="res://Scripts/Weapon/WeaponCircle.gd" id="5_hekug"]
+[ext_resource type="PackedScene" uid="uid://broqhiyk2fcyl" path="res://Scenes/Weapon/muzzel.tscn" id="7_bwbcy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbocy"]
 
@@ -57,6 +58,9 @@ script = ExtResource("5_hekug")
 
 [node name="Gun" parent="GunCircle" instance=ExtResource("5_gxxlo")]
 position = Vector2(1.15428, -0.0930233)
+
+[node name="Muzzel2" parent="GunCircle/Gun" instance=ExtResource("7_bwbcy")]
+position = Vector2(100, -14)
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -20.0

@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://bt44ba8jhu33d"]
+[gd_scene load_steps=2 format=3 uid="uid://broqhiyk2fcyl"]
+
+[ext_resource type="Texture2D" uid="uid://6nmmm3y35mw" path="res://Art/Weapon/Gunni.png" id="1_g8pty"]
 
 [node name="Muzzel" type="Node2D"]
+
+[node name="Muzzel" type="Sprite2D" parent="."]
+position = Vector2(86.0313, -15)
+scale = Vector2(0.0196778, 0.02457)
+texture = ExtResource("1_g8pty")
+
+[node name="Marker2D" type="Marker2D" parent="Muzzel"]

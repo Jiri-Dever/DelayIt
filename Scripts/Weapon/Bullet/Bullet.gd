@@ -1,7 +1,7 @@
 extends Area2D
 const SPEED = 1000
 var velocity = Vector2()
-var speed = 100
+var speed = 600
 var mouse = Vector2()
 var target_vector : Vector2
 
@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 
-	position += target_vector * speed * delta
+	position += (Vector2(cos(rotation), sin(rotation)) * speed * delta)*2
 
 	
 

@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 
+
+@onready var bullet_spawn  = $GunCircle/Gun/Muzzel2
+@onready var muzzle_load : PackedScene = preload("res://Scenes/Weapon/Gun.tscn")
 @onready var bullet_load : PackedScene = preload("res://Scenes/Weapon/Bullet/Bullet.tscn")
 var mousePos = Vector2()
-var camera = "res://Scenes/Character/Player/Player.tscn"
+@onready var pistol_bullet_marker = $GunniSprite/Muzzel/Marker2D
 
 
 
@@ -89,7 +92,7 @@ func get_input_vel():
 		
 	return horizontal
 
-
+#Not doing anything
 func get_player_dir():
 	var player_dire
 	if player_dire > 0:
@@ -117,15 +120,32 @@ func _physics_process(delta):
 #DEBUG FOR LABEL vel
 	$Vel.text = str("vel.y: "+str(velocity.y)+"\n"+"vel.x"+str(velocity.x))
 
+
+
 	move_and_slide()
 
 
 
+var can_shoot = true
+var delay = 0.25
 
 
 func shoot():
 
-
-	var mouse_position : Vector2 = (get_global_mouse_position() - global_position).normalized()
-
+	
+	if can_shoot:
+		can_shoot = false
+		var mouse_position: Vector2 = (get_global_mouse_position() - global_position).normalized()
+		
+		var bullet = bullet_load.instantiate()
+		bullet.position = bullet_spawn.global_position
+		bullet.rotation = bullet_spawn.global_rotation
+		get_parent().add_child(bullet)
+		await get_tree().create_timer(delay).timeout
+		can_shoot = true
+		
+			# Add the bullet to the scene tree
+	else:
+		pass
+		#Play Click Sound or smth
 
