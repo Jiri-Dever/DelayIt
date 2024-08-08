@@ -127,7 +127,7 @@ func _physics_process(delta):
 
 
 var can_shoot = true
-var delay = 0.25
+var delay = 0.5
 
 
 func shoot():
