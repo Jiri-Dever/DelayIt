@@ -1,7 +1,7 @@
 extends Area2D
-const SPEED = 1000
+
 var velocity = Vector2()
-var speed = 600
+@export var speed = 2000
 var mouse = Vector2()
 var target_vector : Vector2
 

@@ -13,7 +13,8 @@ script = ExtResource("1_2ntjv")
 scale = Vector2(30, 30)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(0.613823, 0.720879)
+position = Vector2(7.45058e-09, -1.49012e-08)
+scale = Vector2(0.852532, 1.03531)
 mesh = SubResource("BoxMesh_jbsyg")
 texture = ExtResource("2_j63fw")
 

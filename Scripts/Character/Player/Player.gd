@@ -113,7 +113,13 @@ func _physics_process(delta):
 		jump()
 
 	if Input.is_action_pressed("mouse_aim"):
-		$Line2D.drawline()
+		$GunCircle/Gun/Muzzel2/AimLine.show()
+		Engine.time_scale = 0.25
+		
+	else:
+		$GunCircle/Gun/Muzzel2/AimLine.hide()
+		Engine.time_scale = 1
+		
 		
 	if Input.is_action_just_pressed("mouse_shoot"):
 		shoot()
@@ -128,6 +134,9 @@ func _physics_process(delta):
 
 var can_shoot = true
 var delay = 0.5
+
+
+		
 
 
 func shoot():

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnde5c6smlrmw"]
+
+[ext_resource type="Shader" path="res://floor.gdshader" id="1_uw7sh"]
+[ext_resource type="PackedScene" uid="uid://qw57ip1krywx" path="res://Scenes/Character/Player/Player.tscn" id="2_5sb0h"]
+[ext_resource type="PackedScene" uid="uid://w1xjqxqtvsp" path="res://Scenes/DeathWall.tscn" id="3_jev11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0im3u"]
+shader = ExtResource("1_uw7sh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_tq72j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw11o"]
+size = Vector2(1.00825, 0.909719)
+
+[node name="Main" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+show_behind_parent = true
+disable_mode = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+material = SubResource("ShaderMaterial_0im3u")
+position = Vector2(574.75, 632.731)
+scale = Vector2(1151.5, 38.5386)
+mesh = SubResource("BoxMesh_tq72j")
+
+[node name="MeshInstance2D1" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(576, 633)
+scale = Vector2(1151, 35.0773)
+mesh = SubResource("BoxMesh_tq72j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(582.5, 632.47)
+scale = Vector2(1151.5, 38.5386)
+shape = SubResource("RectangleShape2D_jw11o")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_5sb0h")]
+position = Vector2(44, 580)
+scale = Vector2(1.00308, 1)
+move_speed = 200.0
+
+[node name="DeathWall" parent="." instance=ExtResource("3_jev11")]
+
+[node name="Line2D" type="Line2D" parent="."]

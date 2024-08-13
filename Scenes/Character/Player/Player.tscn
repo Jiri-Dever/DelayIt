@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qw57ip1krywx"]
+[gd_scene load_steps=14 format=3 uid="uid://qw57ip1krywx"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Player/Player.gd" id="1_vlblm"]
 [ext_resource type="Texture2D" uid="uid://dpn7vn11s0uhr" path="res://Art/Character/Untitled.png" id="2_xhebk"]
@@ -13,6 +13,19 @@
 [sub_resource type="QuadMesh" id="QuadMesh_nvg06"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rhr6y"]
+
+[sub_resource type="Curve" id="Curve_vpd2m"]
+max_value = 3.0
+_data = [Vector2(0, 0.263736), 0.0, 2.18071, 0, 0, Vector2(0.231579, 0.395604), 0.0, 0.0, 0, 0, Vector2(0.805263, 0.923077), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_2h24i"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.22, 0.46, 0.62, 0.793333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.20811, 0.20811, 0.20811, 1, 0.494159, 0.494159, 0.494159, 1, 0.686667, 0.686667, 0.686667, 1, 0.832662, 0.832662, 0.832662, 1, 1, 1, 1, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iq5bu"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_vlblm")
@@ -43,12 +56,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="LabelTimer"]
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(24, -3)
-script = ExtResource("4_uos3j")
-
-[node name="AimLine" type="MeshInstance2D" parent="."]
-
 [node name="GunCircle" type="MeshInstance2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
@@ -61,6 +68,20 @@ position = Vector2(1.15428, -0.0930233)
 
 [node name="Muzzel2" parent="GunCircle/Gun" instance=ExtResource("7_bwbcy")]
 position = Vector2(100, -14)
+
+[node name="AimLine" type="Line2D" parent="GunCircle/Gun/Muzzel2"]
+self_modulate = Color(1, 1, 1, 0.517647)
+z_index = -1
+position = Vector2(-453.787, 64.4807)
+scale = Vector2(13.6072, 25.2403)
+points = PackedVector2Array(24, -3)
+width = 3.0
+width_curve = SubResource("Curve_vpd2m")
+default_color = Color(0.599125, 0, 0.00303248, 1)
+gradient = SubResource("Gradient_2h24i")
+texture = SubResource("PlaceholderTexture2D_iq5bu")
+texture_mode = 2
+script = ExtResource("4_uos3j")
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -20.0
