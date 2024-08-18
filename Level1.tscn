@@ -15,7 +15,7 @@ size = Vector2(1.00825, 0.909719)
 [node name="Main" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-show_behind_parent = true
+top_level = true
 disable_mode = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
@@ -35,11 +35,13 @@ position = Vector2(582.5, 632.47)
 scale = Vector2(1151.5, 38.5386)
 shape = SubResource("RectangleShape2D_jw11o")
 
+[node name="DeathWall" parent="." instance=ExtResource("3_jev11")]
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_5sb0h")]
 position = Vector2(44, 580)
 scale = Vector2(1.00308, 1)
 move_speed = 200.0
 
-[node name="DeathWall" parent="." instance=ExtResource("3_jev11")]
-
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="CharacterBody2D"]
+position = Vector2(-43.8649, -580)
+scale = Vector2(0.996929, 1)

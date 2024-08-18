@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 
-
+@onready var gun = $GunCircle/Gun
+@onready var gun_pos = Vector2(gun.position)
 @onready var bullet_spawn  = $GunCircle/Gun/Muzzel2
 @onready var muzzle_load : PackedScene = preload("res://Scenes/Weapon/Gun.tscn")
 @onready var bullet_load : PackedScene = preload("res://Scenes/Weapon/Bullet/Bullet.tscn")
-var mousePos = Vector2()
+
 @onready var pistol_bullet_marker = $GunniSprite/Muzzel/Marker2D
 
 
@@ -31,7 +32,7 @@ var jump_gravity : float
 var fall_gravity : float 
 
 var accel = 200
-##
+
 
 
 # Vars for horizontal
@@ -55,13 +56,11 @@ func _ready():
 	
 
 
-func get_gravity():
+func get_gravity_():
 
 	if velocity.y < 0.0:
-		
 		return jump_gravity
 	else:
-		
 		return fall_gravity
  
 
@@ -70,7 +69,6 @@ func jump():
 	if max_jumps > 0:
 		velocity.y = jump_velocity
 		max_jumps -= 1
-
 	else:
 		pass#play sound or shake screen etc	
 
@@ -107,7 +105,7 @@ func _physics_process(delta):
 		if max_jumps != 2:
 			max_jumps = 2
 	else:
-		velocity.y += get_gravity() * delta
+		velocity.y += get_gravity_() * delta
 	velocity.x = get_input_vel() * move_speed
 	if Input.is_action_just_pressed("move_jump"):
 		jump()
@@ -127,7 +125,6 @@ func _physics_process(delta):
 	$Vel.text = str("vel.y: "+str(velocity.y)+"\n"+"vel.x"+str(velocity.x))
 
 
-
 	move_and_slide()
 
 
@@ -136,13 +133,15 @@ var can_shoot = true
 var delay = 0.5
 
 
-		
-
 
 func shoot():
-
 	
+	#Reset Animation of Shooting
+	gun.position.x = gun_pos.x
+	
+	#Delay Logic
 	if can_shoot:
+		gun.position.x -= 0.1
 		can_shoot = false
 		var mouse_position: Vector2 = (get_global_mouse_position() - global_position).normalized()
 		
@@ -151,10 +150,11 @@ func shoot():
 		bullet.rotation = bullet_spawn.global_rotation
 		get_parent().add_child(bullet)
 		await get_tree().create_timer(delay).timeout
+		
+		gun.position.x = gun_pos.x
+		
 		can_shoot = true
 		
-			# Add the bullet to the scene tree
 	else:
 		pass
 		#Play Click Sound or smth
-

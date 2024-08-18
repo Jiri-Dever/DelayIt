@@ -83,6 +83,12 @@ texture = SubResource("PlaceholderTexture2D_iq5bu")
 texture_mode = 2
 script = ExtResource("4_uos3j")
 
+[node name="RaycastAimLine" type="RayCast2D" parent="GunCircle/Gun/Muzzel2/AimLine"]
+position = Vector2(22, -2)
+scale = Vector2(100, 1)
+target_position = Vector2(30.9999, 7.15256e-07)
+hit_from_inside = true
+
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -20.0
 offset_top = -78.0
